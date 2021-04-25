@@ -69,13 +69,31 @@
 #     print(cnt)
 #     cnt+=1
 
-def calcBaggageWeight ():
-    baggage = int(input("짐의 무게는 얼마입니까? "))
+# import math 
 
-    if baggage >= 10:
-        print("수수료는 10,000원 입니다")
-    else:
-        print("수수료는 없습니다")
+# def calcBaggageWeight ():
+#     baggage = int(input("짐의 무게는 얼마입니까? "))
 
-calcBaggageWeight()
-    
+#     if baggage >= 10:
+#         price = baggage/10
+#         price = int(price)*10000
+#         print("수수료는 ",price,"원 입니다")
+#     else:
+#         print("수수료는 없습니다")
+
+
+
+# calcBaggageWeight()
+# while True:
+#     calcBaggageWeight()
+
+multiline = """안녕하세요. 파이썬 세계로 오신걸
+환영합니다.
+파이썬은 비단뱀 철머 매력적인 언어입니다.
+"""
+
+array = multiline.split()
+for i in array:
+    print(i)    
+
+print(len(array))
