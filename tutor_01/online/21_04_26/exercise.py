@@ -31,15 +31,53 @@
 
 
 
-# 2번 문제
-```
-    배열 함수 append 활용
-```
-vectorArray = []
-vectorArrayLength = int(input("vertor 수: "))
+# # 2번 문제
+# ```
+#     배열 함수 append, contain 활용
+# ```
 
-for i in range(0, vectorArrayLength):
-    vector=input()
-    vectorArray.append(vector)
+# vectorArray = []
+# vectorArrayLength = int(input("vertor 수: "))
 
-print("vector 크기: " + str(len(vectorArray)))
+# # 입력한 숫자 만큼 array에 값을 입력
+# for i in range(0, vectorArrayLength):
+#     vector=input()
+#     vectorArray.append(vector)
+
+
+# # 2-1  append
+# print("vector 크기: " + str(len(vectorArray)))
+
+# # 2-2 in 문제
+# # 마지막 입력이 기존 배열에 있는 항목이라면 YES 출력
+# checkNumber = input()
+# if checkNumber in vectorArray:
+#    print("YES")
+
+
+
+# 3번문제
+"""
+    list와 for, if 의 활용
+"""
+
+message = ['spam', 'ham', 'spam', 'ham', 'spam'] 
+
+# 3-1
+dummy = []
+for i in message:
+    if i == 'spam':
+        dummy.append(1)
+    elif i == 'ham':
+        dummy.append(0)
+
+print(dummy)
+
+# 3-2
+spam_list = []
+
+for i in message:
+    if i == 'spam':
+        spam_list.append(i)
+
+print(spam_list)
