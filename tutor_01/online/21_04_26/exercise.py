@@ -61,23 +61,23 @@
     list와 for, if 의 활용
 """
 
-message = ['spam', 'ham', 'spam', 'ham', 'spam'] 
+# message = ['spam', 'ham', 'spam', 'ham', 'spam'] 
 
-# 3-1
-dummy = []
-for i in message:
-    if i == 'spam':
-        dummy.append(1)
-    elif i == 'ham':
-        dummy.append(0)
+# # 3-1
+# dummy = []
+# for i in message:
+#     if i == 'spam':
+#         dummy.append(1)
+#     elif i == 'ham':
+#         dummy.append(0)
 
-print(dummy)
+# print(dummy)
 
-# 3-2
-spam_list = []
+# # 3-2
+# spam_list = []
 
-for i in message:
-    if i == 'spam':
-        spam_list.append(i)
+# for i in message:
+#     if i == 'spam':
+#         spam_list.append(i)
 
-print(spam_list)
+# print(spam_list)
