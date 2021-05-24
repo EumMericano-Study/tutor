@@ -15,13 +15,13 @@ for (let i = 0; i < houseLen; i++) {
   map[i] = house;
 }
 // print map
-// for (let i = 0; i < map.length; i++) {
-//   line = "";
-//   for (let j = 0; j < map[i].length; j++) {
-//     line += `${map[i][j]} `;
-//   }
-//   console.log(line);
-// }
+for (let i = 0; i < map.length; i++) {
+  line = "";
+  for (let j = 0; j < map[i].length; j++) {
+    line += `${map[i][j]} `;
+  }
+  console.log(line);
+}
 
 function DFS(before, n, total) {
   console.log("before", before, "n", n, "total", total);
