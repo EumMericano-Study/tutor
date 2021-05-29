@@ -26,6 +26,7 @@
 > - dic, set, map
 
 ```
+1) 알고리즘에 대해서
 시뮬레이션
 그냥 구현 for if
 DFS
@@ -39,15 +40,9 @@ Breadth First Search
 
 
 1번문제: 재귀로 facrotrial 짜기
+2번문제: 프로그래머스 모의고사
 
-5!
-5 * 4 * 3 * 2 * 1
-재귀
 
-def factorial (N):
-	sdljfasdkljf
-	sdfkljsdflkj
 
-N! 출력하기
-
+2) 구글맵 + pandas
 ```
