@@ -3,11 +3,11 @@ let todoList = [];
 function onAdd() {
   const inputEl = document.querySelector(".desc");
   const todo = { id: currentId, desc: inputEl.value };
+  const elemList = document.querySelector(".list");
+  const liEl = makeTodoElement(todo);
   todoList.push(todo);
   currentId += 1;
   inputEl.value = "";
-  const elemList = document.querySelector(".list");
-  const liEl = makeTodoElement(todo);
   elemList.appendChild(liEl);
 }
 
