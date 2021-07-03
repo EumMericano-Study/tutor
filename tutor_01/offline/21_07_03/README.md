@@ -22,8 +22,13 @@ git 첫 이용
 > 알고리즘 백준
 
 ```
-for 별찍기 3문제
+for 별찍기 3문제, if문 한문제
 1. https://www.acmicpc.net/status?user_id=opwer032&problem_id=2444&from_mine=1
 2. https://www.acmicpc.net/problem/2445
-3. https://www.acmicpc.net/problem/10995
+3. https://www.acmicpc.net/problem/9498
+4. https://www.acmicpc.net/problem/10995
+
+
+매일 for문만 풀다보니 for에는 좀 자신이 생겼는데
+오히려 if를 어려워 하는 경향이 있었음
 ```
