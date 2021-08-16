@@ -1,4 +1,5 @@
 function handleKeyPress(e) {
+  e.preventDefault();
   if (e.keyCode === 13) handleClick();
 }
 
@@ -10,9 +11,9 @@ function handleClick() {
 }
 
 function makeTodo(text) {
-  const ulEl = document.querySelector(".list");
-  const liEl = document.createElement("li");
+  const ulTag = document.querySelector(".list");
+  const liTag = document.createElement("li");
 
-  liEl.innerText = text;
-  ulEl.appendChild(liEl);
+  liTag.innerText = text;
+  ulTag.appendChild(liTag);
 }
