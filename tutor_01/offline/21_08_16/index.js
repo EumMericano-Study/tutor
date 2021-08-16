@@ -1,5 +1,4 @@
 function handleKeyPress(e) {
-  e.preventDefault();
   if (e.keyCode === 13) handleClick();
 }
 
