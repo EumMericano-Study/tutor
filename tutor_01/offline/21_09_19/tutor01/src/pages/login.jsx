@@ -26,26 +26,26 @@ class Login extends React.Component {
         <LoginBox>
           <Title>로그인</Title>
           <InputContainer>
-            <input
+            <Input
               type="text"
-              placeholder="id를 입력해주세요"
+              placeholder="ID"
               name="id"
               value={this.state.id}
               onChange={this.handleInput}
             />
-            <input
+            <Input
               type="password"
-              placeholder="비밀번호를 입력해주세요"
+              placeholder="Password"
               name="password"
               value={this.state.password}
               onChange={this.handleInput}
             />
             <CheckContainer>
-              <input type="checkbox" />
-              <h4>로그인 상태 유지</h4>
+              <CheckBox type="checkbox" />
+              <h2>로그인 상태 유지</h2>
             </CheckContainer>
           </InputContainer>
-          <button onClick={this.handleSubmit}>-)</button>
+          <Button onClick={this.handleSubmit}>Login</Button>
         </LoginBox>
       </Container>
     );
@@ -66,6 +66,11 @@ const LoginBox = styled.div`
   width: 30%;
   height: 70%;
 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+
   padding: 4em 3em;
   border: 2px solid red;
 `;
@@ -74,8 +79,6 @@ const Title = styled.h2`
   font-family: "Black Han Sans", sans-serif;
   font-size: 3rem;
   text-align: center;
-
-  margin-bottom: 1em;
 `;
 
 const InputContainer = styled.div`
@@ -83,6 +86,47 @@ const InputContainer = styled.div`
   flex-direction: column;
 `;
 
+const Input = styled.input`
+  height: 2em;
+
+  font-size: 2rem;
+
+  background-color: rgba(0, 0, 0, 0.1);
+
+  transition: all 0.2s;
+
+  padding-left: 0.3em;
+  margin-bottom: 0.5em;
+  border: none;
+
+  :hover {
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  :focus {
+    background-color: transparent;
+    border: 2px solid black;
+  }
+`;
+
 const CheckContainer = styled.div`
   display: flex;
+  align-items: center;
+`;
+
+const CheckBox = styled.input`
+  width: 2em;
+  height: 2em;
+
+  margin-right: 0.7em;
+
+  transition: all 0.2s;
+  border: none;
+`;
+
+const Button = styled.button`
+  width: 5em;
+  height: 5em;
+
+  border-radius: 1em;
 `;
