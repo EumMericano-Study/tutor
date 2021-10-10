@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import jwt from "jsonwebtoken";
+import { setCookie } from "components/cookie";
 
 import phone from "assets/phone.png";
 
@@ -29,6 +30,7 @@ function Login() {
       );
 
       // 회원정보 저장 쿠키
+      setCookie("jwt_token", token, 30);
       // 리덕스에도 저장되게
       // window.location.href = "/main";
       return;
