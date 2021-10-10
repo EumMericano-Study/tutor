@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import jwt from "jsonwebtoken";
 
 import phone from "assets/phone.png";
 
 function Login() {
   const [id, setId] = useState("");
-  const [passowrd, setPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const jwt_key = process.env.REACT_APP_JWT_KEY || "";
 
   function handleInput(event) {
     const { name, value } = event.target;
@@ -13,6 +15,27 @@ function Login() {
     if (name === "password") setPassword(value);
   }
 
+  function _onClick() {
+    if (id === "opwer032@naver.com" && password === "password") {
+      // 1) jwt
+      const token = jwt.sign(
+        {
+          id: "opwer032@naver.com",
+          name: "음영현",
+          age: 31,
+          phone: "010-1234-5678",
+        },
+        jwt_key
+      );
+
+      // 회원정보 저장 쿠키
+      // 리덕스에도 저장되게
+      // window.location.href = "/main";
+      return;
+    }
+    // 로그인 실패
+    setPassword("");
+  }
   return (
     <Container>
       <BlockAlign>
@@ -33,10 +56,10 @@ function Login() {
                 placeholder="password"
                 name="password"
                 type="password"
-                value={passowrd}
+                value={password}
                 onChange={handleInput}
               />
-              <Button>로그인</Button>
+              <Button onClick={_onClick}>로그인</Button>
             </AuthContainer>
           </LoginContainer>
         </Block>
