@@ -22,3 +22,161 @@ div .menu {
 div .main {
   width: 90vw;
 }
+
+div .menu-header {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 10px 0;
+}
+
+div .menu img {
+  width: 70%;
+  height: 100%;
+}
+
+div .menu-item {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+div .empty-box {
+  width: 20px;
+  height: 20px;
+
+  margin: 15px;
+}
+
+div .divider {
+  border-top: 2px solid #ccc;
+  margin: 10px 0;
+}
+
+div .login-alert {
+  padding: 0 15px;
+}
+
+div .login-box {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  margin: 10px 0;
+  border: 1px solid rgba(22, 150, 255, 0.513);
+}
+
+h4.menu-title {
+  color: gray;
+  margin-left: 15px;
+}
+
+div .main-header {
+  height: 50px;
+}
+
+div .input-cont {
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div .small-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.input-cont input,
+.input-cont button,
+.input-cont .record {
+  height: 30px;
+  padding: 0;
+}
+
+.input-cont input {
+  width: 250px;
+}
+
+div .record {
+  width: 22px;
+  height: 22px;
+
+  background-color: #ccc;
+}
+
+div .main-tags {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+}
+
+div .tag {
+  background-color: #ddd;
+  padding: 7px 12px;
+  margin: 0 7px;
+  border-radius: 20px;
+}
+
+div .selected {
+  background-color: black;
+  color: white;
+}
+
+div .divider2 {
+  border-top: 2px solid #ccc;
+}
+
+.main-adv img {
+  width: 80%;
+  height: 80%;
+}
+
+div .main-contents {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  padding: 30px 0;
+}
+
+div .content {
+  width: 21%;
+
+  margin: 20px 10px;
+}
+
+.thumbnail {
+  width: 100%;
+}
+
+.profile {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 100%;
+}
+.detail {
+  width: 70%;
+}
+
+.detail h3 {
+  font-size: 17px;
+  margin: 0;
+}
+
+.desc {
+  display: flex;
+  justify-content: space-evenly;
+}
