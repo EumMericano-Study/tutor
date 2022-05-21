@@ -15,6 +15,8 @@ class WindowClass(QMainWindow, form_class):
 
         self.pushButton.clicked.connect(self.handleClick1)
         self.pushButton2.clicked.connect(self.handleClick2)
+        self.changeButton.clicked.connect(self.handleReturn)
+        self.lineEdit.returnPressed.connect(self.handleReturn)
 
     def handleClick1(self):
         print('헛소리 하지마')
@@ -23,9 +25,13 @@ class WindowClass(QMainWindow, form_class):
         num = int(self.label_2.text())
         self.label_2.setText(str(num+1))
 
+    def handleReturn(self):
+        comment = self.lineEdit.text();
+        self.label.setText(comment)
+
 styleSheet = """
     WindowClass {
-        border-image: url('/Users/eumericano/Documents/pyQt5/todoList/images.jpeg')
+        border-image: url('/Users/eumericano/Documents/tutor/tutor_04/pyQt5/todoList/images.jpeg')
     }
 """
 
