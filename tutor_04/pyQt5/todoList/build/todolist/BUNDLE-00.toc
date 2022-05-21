@@ -1,0 +1,3 @@
+([('todolist',
+   '/Users/eumericano/Documents/tutor/tutor_04/pyQt5/todoList/dist/todolist',
+   'EXECUTABLE')],)

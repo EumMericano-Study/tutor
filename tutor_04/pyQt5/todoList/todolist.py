@@ -1,6 +1,8 @@
 import sys
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 from PyQt5 import uic
+import urllib.request
 
 # UI파일 연결
 # 단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
@@ -12,11 +14,17 @@ class WindowClass(QMainWindow, form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.imageUrl = 'http://img.etoday.co.kr/pto_db/2018/02/700/20180207224139_1184559_600_819.jpg'
 
         self.pushButton.clicked.connect(self.handleClick1)
         self.pushButton2.clicked.connect(self.handleClick2)
         self.changeButton.clicked.connect(self.handleReturn)
         self.lineEdit.returnPressed.connect(self.handleReturn)
+
+        self.qPixmapVar = QPixmap()
+        self.loadImage()
+
+        self.comboBox.currentIndexChanged.connect(self.changeImage)
 
     def handleClick1(self):
         print('헛소리 하지마')
@@ -26,8 +34,24 @@ class WindowClass(QMainWindow, form_class):
         self.label_2.setText(str(num+1))
 
     def handleReturn(self):
-        comment = self.lineEdit.text();
+        comment = self.lineEdit.text()
         self.label.setText(comment)
+
+    def loadImage(self, photoNum = "1"):
+        imageFromWeb=""
+        if photoNum == '1':
+            imageFromWeb = urllib.request.urlopen('http://img.etoday.co.kr/pto_db/2018/02/700/20180207224139_1184559_600_819.jpg').read()
+        elif photoNum == "2":
+            imageFromWeb = urllib.request.urlopen('http://www.stardailynews.co.kr/news/photo/201809/215406_245231_5550.jpg').read()
+
+        self.qPixmapVar.loadFromData(imageFromWeb)
+        self.imageLabel.setPixmap(self.qPixmapVar)
+        self.imageLabel.setScaledContents(True)
+
+    def changeImage(self):
+        num = self.comboBox.currentText()
+        self.loadImage(num);
+
 
 styleSheet = """
     WindowClass {
