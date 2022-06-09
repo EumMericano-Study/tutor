@@ -1,15 +1,19 @@
 const todos_ul = document.querySelector(".todo-list");
 const TODOS_LOCAL_STORAGE = "TODOS_LOCAL_STORAGE";
 
-let todos = [
-  { index: 1, content: "코딩", checked: false, createdAt: new Date() },
-  { index: 2, content: "아이디어 기획", checked: false, createdAt: new Date() },
-  { index: 3, content: "손 씻기", checked: false, createdAt: new Date() },
-];
+let todos = [];
 
 const saveTodos = () => {
-  // TODO
-  // Localstrage에 저장
+  localStorage.setItem(TODOS_LOCAL_STORAGE, JSON.stringify(todos));
+};
+
+const handleRemoveBtn = (event) => {
+  event.preventDefault();
+  const li = event.target.parentNode;
+  todos = todos.filter((todo) => todo.index !== parseInt(li.dataset.index));
+
+  todos_ul.removeChild(li);
+  saveTodos();
 };
 
 const handleCheckBtn = (event) => {
@@ -45,6 +49,7 @@ const makeTodo = (todo) => {
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = "🗑";
   deleteBtn.classList = "remove";
+  deleteBtn.addEventListener("click", handleRemoveBtn);
 
   li.append(checkBtn);
   li.append(content);
@@ -56,12 +61,12 @@ const draw = () => {
   todos.forEach((todo) => todos_ul.appendChild(makeTodo(todo)));
 };
 
-const checkTodo = () => {
-  return localStorage.getItem(TODOS_LOCAL_STORAGE) || [];
+const loadTodos = () => {
+  todos = JSON.parse(localStorage.getItem(TODOS_LOCAL_STORAGE)) || [];
 };
 
 const init = () => {
-  checkTodo();
+  loadTodos();
   draw();
 };
 
