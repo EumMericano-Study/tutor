@@ -1,4 +1,6 @@
-const todos_ul = document.querySelector(".todo-list");
+const todoUl = document.querySelector("ul.todo-list"),
+  todoInput = document.querySelector("input.todo-input"),
+  todoForm = document.querySelector("form");
 const TODOS_LOCAL_STORAGE = "TODOS_LOCAL_STORAGE";
 
 let todos = [];
@@ -12,7 +14,7 @@ const handleRemoveBtn = (event) => {
   const li = event.target.parentNode;
   todos = todos.filter((todo) => todo.index !== parseInt(li.dataset.index));
 
-  todos_ul.removeChild(li);
+  todoUl.removeChild(li);
   saveTodos();
 };
 
@@ -27,6 +29,32 @@ const handleCheckBtn = (event) => {
 
   if (checkedTodo.checked) li.classList.add("checked");
   else li.classList.remove("checked");
+  saveTodos();
+};
+
+const getMaxIndex = async () => {
+  let max = 0;
+  await Promise.all(
+    todos.map((todo) => {
+      max = max > todo.index ? max : todo.index + 1;
+    })
+  );
+  return max;
+};
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const content = todoInput.value;
+  const newTodo = {
+    index: await getMaxIndex(),
+    content,
+    checked: false,
+    createdAt: new Date(),
+  };
+  todos.push(newTodo);
+  todoInput.value = "";
+
+  todoUl.appendChild(makeTodo(newTodo));
   saveTodos();
 };
 
@@ -58,7 +86,7 @@ const makeTodo = (todo) => {
 };
 
 const draw = () => {
-  todos.forEach((todo) => todos_ul.appendChild(makeTodo(todo)));
+  todos.forEach((todo) => todoUl.appendChild(makeTodo(todo)));
 };
 
 const loadTodos = () => {
@@ -68,6 +96,7 @@ const loadTodos = () => {
 const init = () => {
   loadTodos();
   draw();
+  todoForm.addEventListener("submit", handleSubmit);
 };
 
 init();
