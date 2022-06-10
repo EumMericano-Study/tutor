@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Todo from "./todo";
 
@@ -6,16 +6,26 @@ function App() {
   const [todos, setTodos] = useState(
     localStorage.getItem("todos") || [
       { index: 1, content: "인사하기", checked: false, createdAt: new Date() },
-      { index: 2, content: "인사하기", checked: false, createdAt: new Date() },
-      { index: 3, content: "인사하기", checked: false, createdAt: new Date() },
+      { index: 2, content: "손씻기", checked: false, createdAt: new Date() },
+      { index: 3, content: "코딩하기", checked: false, createdAt: new Date() },
     ]
   );
   const [todoValue, setTodoValue] = useState("");
+  const maxIndex = useRef(0);
 
-  const handleSubmit = (e) => {
+  const getMaxIndex = async () => {
+    maxIndex.current = 0;
+    await Promise.all(
+      todos.map((todo) => {
+        maxIndex.current =
+          maxIndex.current > todo.index ? maxIndex.current : todo.index + 1;
+      })
+    );
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(e.target);
+    await getMaxIndex();
+    console.log(maxIndex.current);
   };
 
   const handleInputChange = (e) => {
@@ -26,12 +36,17 @@ function App() {
   return (
     <Container>
       <h2>todoList</h2>
+      <ul>
+        {todos.map((todo) => (
+          <Todo
+            key={todo.index}
+            todo={todo}
+            todos={todos}
+            setTodos={setTodos}
+          />
+        ))}
+      </ul>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {todos.map((todo) => (
-            <Todo todo={todo} />
-          ))}
-        </ul>
         <input type="text" onChange={handleInputChange} />
       </form>
     </Container>
