@@ -4,13 +4,9 @@ import Todo from "./todo";
 
 function App() {
   const [todos, setTodos] = useState(
-    localStorage.getItem("todos") || [
-      { index: 1, content: "인사하기", checked: false, createdAt: new Date() },
-      { index: 2, content: "손씻기", checked: false, createdAt: new Date() },
-      { index: 3, content: "코딩하기", checked: false, createdAt: new Date() },
-    ]
+    JSON.parse(localStorage.getItem("todos")) || []
   );
-  const [todoValue, setTodoValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const maxIndex = useRef(0);
 
   const getMaxIndex = async () => {
@@ -25,13 +21,24 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await getMaxIndex();
-    console.log(maxIndex.current);
+    const newTodo = {
+      index: maxIndex.current,
+      content: inputValue,
+      checked: false,
+      createdAt: new Date(),
+    };
+    setInputValue("");
+    setTodos([...todos, newTodo]);
   };
 
   const handleInputChange = (e) => {
     e.preventDefault();
-    setTodoValue(e.target.value);
+    setInputValue(e.target.value);
   };
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <Container>
@@ -47,7 +54,7 @@ function App() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleInputChange} />
+        <input type="text" onChange={handleInputChange} value={inputValue} />
       </form>
     </Container>
   );
