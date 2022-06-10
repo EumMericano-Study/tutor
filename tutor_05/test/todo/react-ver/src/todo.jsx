@@ -9,13 +9,14 @@ const Todo = ({ todo, todos, setTodos }) => {
     setTodos(newTodos);
   };
 
-  const handleRemove = () => {};
-
+  const handleRemove = () => {
+    setTodos(todos.filter((item) => item.index !== todo.index));
+  };
   return (
     <Container checked={todo.checked}>
       <button onClick={handleCheck}>✔</button>
       <h2>{todo.content}</h2>
-      <button>🍎</button>
+      <button onClick={handleRemove}>🍎</button>
     </Container>
   );
 };
