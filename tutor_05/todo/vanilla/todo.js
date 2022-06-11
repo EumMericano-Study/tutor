@@ -72,6 +72,7 @@ const handleCheck = (event) => {
 const makeLi = (todo) => {
   const li = document.createElement("li");
   li.dataset.index = todo.index;
+  li.classList.add("todo");
 
   if (todo.checked) li.classList.add("checked");
 
